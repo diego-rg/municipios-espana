@@ -20,7 +20,7 @@ const Municipios = ({ codProv }) => {
     };
 
     fetchData();
-  }, [codProv]);
+  }, []);
 
   return (
     <div>
@@ -46,7 +46,9 @@ const Municipios = ({ codProv }) => {
                   <tr key={municipio.CODIGOINE}>
                     <td className="cell">{municipio.NOMBRE}</td>
                     <td className="cell">{municipio.NOMBRE_PROVINCIA}</td>
-                    <td className="cell text-right">{municipio.POBLACION_MUNI}</td>
+                    <td className="cell text-right">
+                      {municipio.POBLACION_MUNI}
+                    </td>
                     <td className="cell text-right">
                       {Math.round(municipio.SUPERFICIE) / 100}
                     </td>
