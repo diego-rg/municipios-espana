@@ -34,8 +34,12 @@ const Provincias = () => {
       {loading && <div>Cargando...</div>}
       {!loading && (
         <div>
-          <select name="select" onChange={onSelectChange}>
-            <option disabled selected value>
+          <select
+            name="select"
+            onChange={onSelectChange}
+            defaultValue={"default"}
+          >
+            <option disabled value="default">
               Seleccione una provincia
             </option>
             {data.provincias.map((provincia) => (
