@@ -32,6 +32,9 @@ const Municipios = () => {
               <tr>
                 <th>Nombre</th>
                 <th>Provincia</th>
+                <th>Población</th>
+                <th>Superficie (km²)</th>
+                <th>Altitud (m)</th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +42,9 @@ const Municipios = () => {
                 <tr key={municipio.CODIGOINE}>
                   <td>{municipio.NOMBRE}</td>
                   <td>{municipio.NOMBRE_PROVINCIA}</td>
+                  <td>{municipio.POBLACION_MUNI}</td>
+                  <td>{Math.round(municipio.SUPERFICIE) / 100}</td>
+                  <td>{municipio.ALTITUD}</td>
                 </tr>
               ))}
             </tbody>
