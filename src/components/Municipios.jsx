@@ -35,6 +35,8 @@ const Municipios = () => {
                 <th>Población</th>
                 <th>Superficie (km²)</th>
                 <th>Altitud (m)</th>
+                <th>Longitud (°)</th>
+                <th>Latitud (°)</th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +47,8 @@ const Municipios = () => {
                   <td>{municipio.POBLACION_MUNI}</td>
                   <td>{Math.round(municipio.SUPERFICIE) / 100}</td>
                   <td>{municipio.ALTITUD}</td>
+                  <td>{municipio.LONGITUD_ETRS89_REGCAN95}</td>
+                  <td>{municipio.LATITUD_ETRS89_REGCAN95}</td>
                 </tr>
               ))}
             </tbody>
