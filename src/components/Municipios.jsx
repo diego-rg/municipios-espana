@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Municipios = () => {
+const Municipios = ({ codProv }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [codProv, setCodProv] = useState("15");
 
   useEffect(() => {
     const fetchData = async () => {

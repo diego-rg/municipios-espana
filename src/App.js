@@ -1,8 +1,8 @@
-import Municipios from "./components/Municipios";
+import Provincias from "./components/Provincias";
 function App() {
   return (
     <div className="App">
-      <Municipios />
+      <Provincias />
     </div>
   );
 }
