@@ -35,6 +35,7 @@ const Provincias = () => {
       {!loading && (
         <div>
           <select
+            className="py-2 px-4 bg-gray-300 font-bold border rounded-sm border-black"
             name="select"
             onChange={onSelectChange}
             defaultValue={"default"}
