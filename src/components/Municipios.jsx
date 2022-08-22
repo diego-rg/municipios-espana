@@ -4,7 +4,24 @@ import axios from "axios";
 const Municipios = ({ codProv }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [order, setOrder] = useState("ASC");
 
+  //Ordenar por valor da columna usando o estado order
+  const sortCol = (col) => {
+    if (order === "ASC") {
+      const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
+      setData(sorted);
+      setOrder("DES");
+    }
+    if (order === "DES") {
+      const sorted = [...data].sort((a, b) => (a[col] < b[col] ? 1 : -1));
+      setData(sorted);
+      setOrder("ASC");
+    }
+  };
+
+  //Fetch data: axios devolve "data": sacámolo destructurando e renomeando a response.
+  //Finalmente gardamos os datos solo do array "municipios"
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -12,7 +29,7 @@ const Municipios = ({ codProv }) => {
         const { data: response } = await axios.get(
           "https://www.el-tiempo.net/api/json/v2/municipios"
         );
-        setData(response);
+        setData(response.municipios);
       } catch (error) {
         console.error(error.message);
       }
@@ -30,17 +47,46 @@ const Municipios = ({ codProv }) => {
           <table>
             <thead>
               <tr>
-                <th className="header-cell">Nombre</th>
-                <th className="header-cell">Provincia</th>
-                <th className="header-cell">Población</th>
-                <th className="header-cell">Superficie (km²)</th>
-                <th className="header-cell">Altitud (m)</th>
-                <th className="header-cell">Longitud (°)</th>
-                <th className="header-cell">Latitud (°)</th>
+                <th onClick={() => sortCol("NOMBRE")} className="header-cell">
+                  Nombre
+                </th>
+                <th
+                  onClick={() => sortCol("NOMBRE_PROVINCIA")}
+                  className="header-cell"
+                >
+                  Provincia
+                </th>
+                <th
+                  onClick={() => sortCol("POBLACION_MUNI")}
+                  className="header-cell"
+                >
+                  Población
+                </th>
+                <th
+                  onClick={() => sortCol("SUPERFICIE")}
+                  className="header-cell"
+                >
+                  Superficie (km²)
+                </th>
+                <th onClick={() => sortCol("ALTITUD")} className="header-cell">
+                  Altitud (m)
+                </th>
+                <th
+                  onClick={() => sortCol("LONGITUD_ETRS89_REGCAN95")}
+                  className="header-cell"
+                >
+                  Longitud (°)
+                </th>
+                <th
+                  onClick={() => sortCol("LATITUD_ETRS89_REGCAN95")}
+                  className="header-cell"
+                >
+                  Latitud (°)
+                </th>
               </tr>
             </thead>
             <tbody>
-              {data.municipios
+              {data
                 .filter((municipio) => municipio.CODPROV === codProv)
                 .map((municipio) => (
                   <tr key={municipio.CODIGOINE}>
