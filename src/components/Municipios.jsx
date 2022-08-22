@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { TiArrowUnsorted } from "react-icons/ti";
 
 const Municipios = ({ codProv }) => {
   const [loading, setLoading] = useState(true);
@@ -48,40 +49,40 @@ const Municipios = ({ codProv }) => {
             <thead>
               <tr>
                 <th onClick={() => sortCol("NOMBRE")} className="header-cell">
-                  Nombre
+                  Nombre <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th
                   onClick={() => sortCol("NOMBRE_PROVINCIA")}
                   className="header-cell"
                 >
-                  Provincia
+                  Provincia <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th
                   onClick={() => sortCol("POBLACION_MUNI")}
                   className="header-cell"
                 >
-                  Población
+                  Población <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th
                   onClick={() => sortCol("SUPERFICIE")}
                   className="header-cell"
                 >
-                  Superficie (km²)
+                  Superficie (km²) <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th onClick={() => sortCol("ALTITUD")} className="header-cell">
-                  Altitud (m)
+                  Altitud (m) <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th
                   onClick={() => sortCol("LONGITUD_ETRS89_REGCAN95")}
                   className="header-cell"
                 >
-                  Longitud (°)
+                  Longitud (°) <TiArrowUnsorted className="inline mb-1" />
                 </th>
                 <th
                   onClick={() => sortCol("LATITUD_ETRS89_REGCAN95")}
                   className="header-cell"
                 >
-                  Latitud (°)
+                  Latitud (°) <TiArrowUnsorted className="inline mb-1" />
                 </th>
               </tr>
             </thead>
