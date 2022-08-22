@@ -43,8 +43,8 @@ const Municipios = ({ codProv }) => {
   return (
     <div>
       {loading && <div>Cargando...</div>}
-      {!loading && (
-        <div>
+      {!loading && codProv && (
+        <div className="flex justify-center">
           <table>
             <thead>
               <tr>
@@ -91,7 +91,7 @@ const Municipios = ({ codProv }) => {
                 .filter((municipio) => municipio.CODPROV === codProv)
                 .map((municipio) => (
                   <tr key={municipio.CODIGOINE}>
-                    <td className="cell">{municipio.NOMBRE}</td>
+                    <td className="cell text-left">{municipio.NOMBRE}</td>
                     <td className="cell">{municipio.NOMBRE_PROVINCIA}</td>
                     <td className="cell text-right">
                       {municipio.POBLACION_MUNI}

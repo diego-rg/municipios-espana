@@ -19,7 +19,7 @@ const Provincias = () => {
         const { data: response } = await axios.get(
           "https://www.el-tiempo.net/api/json/v2/provincias"
         );
-        setData(response);
+        setData(response.provincias);
       } catch (error) {
         console.error(error.message);
       }
@@ -30,12 +30,12 @@ const Provincias = () => {
   }, []);
 
   return (
-    <div>
+    <div className="text-center">
       {loading && <div>Cargando...</div>}
       {!loading && (
         <div>
           <select
-            className="py-2 px-4 bg-gray-300 font-bold border rounded-sm border-black"
+            className="py-2 px-4 bg-gray-300 font-bold outline-0"
             name="select"
             onChange={onSelectChange}
             defaultValue={"default"}
@@ -43,11 +43,15 @@ const Provincias = () => {
             <option disabled value="default">
               Seleccione una provincia
             </option>
-            {data.provincias.map((provincia) => (
-              <option key={provincia.CODPROV} value={provincia.CODPROV}>
-                {provincia.NOMBRE_PROVINCIA}
-              </option>
-            ))}
+            {data
+              .sort((a, b) =>
+                a.NOMBRE_PROVINCIA > b.NOMBRE_PROVINCIA ? 1 : -1
+              )
+              .map((provincia) => (
+                <option key={provincia.CODPROV} value={provincia.CODPROV}>
+                  {provincia.NOMBRE_PROVINCIA}
+                </option>
+              ))}
           </select>
         </div>
       )}
