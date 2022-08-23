@@ -44,8 +44,8 @@ const Municipios = ({ codProv }) => {
     <div>
       {loading && <div>Cargando...</div>}
       {!loading && codProv && (
-        <div className="flex justify-center">
-          <table>
+        <div>
+          <table className="m-auto">
             <thead>
               <tr>
                 <th onClick={() => sortCol("NOMBRE")} className="header-cell">
